@@ -18,7 +18,7 @@ function createWindow() {
     win.maximize();
 
     // Open the DevTools.
-    win.webContents.openDevTools()
+    //win.webContents.openDevTools()
 
     // Emitted when the window is closed.
     win.on('closed', () => {
@@ -82,3 +82,9 @@ ipcMain.on('query', function(event, str) {
 ipcMain.on('save', function(event, id, entry) {
     win.webContents.send('update', db);
 });
+
+const express = require('express')
+const path = require('path')
+const ex = express()
+ex.use(express.static('./'));
+ex.listen(6554, 'localhost')
